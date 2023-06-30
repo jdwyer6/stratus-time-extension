@@ -5,12 +5,24 @@
     </head>
     <body>
         <main class="container">
-
+            <h3>Stratus Time Information Extension</h3>
             <div>
                 <span>Clock out at: </span>
-                <h1 class="displayResultText"></h1>
+                <h1 class="displayResultText">?</h1>
+                <p class="displayErrorText" style="display:none;">No data available. Use manual entry. <a>Report a bug</a></p>
             </div>
 
+            <details>
+                <summary>How it works</summary>
+                <ul>
+                    <li>Log in to Stratus Time</li>
+                    <li>Open the <strong><i>Time Card</i></strong></li>
+                    <li>Open the Stratus Time Extension</li>
+                </ul>
+            </details>
+            
+            <details>
+            <summary>Manual Entry</summary>
             <form>
                 <div class="grid">
                     <label for="currentTime">
@@ -28,6 +40,9 @@
                 </div>
                 <button type="submit" id="submitButton">Submit</button>
             </form>
+            </details>
+
+
 
 
             

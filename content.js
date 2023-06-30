@@ -29,6 +29,18 @@ chrome.runtime.onMessage.addListener(
     }
   );
 
+/* document.body.style.backgroundImage = 'none';
+document.querySelector('.shadow').style.backgroundColor = 'white';
+document.documentElement.style.backgroundImage = 'none';
+document.body.style.backgroundColor = 'white';
+document.querySelectorAll('.iconsDiv').forEach(function(el) {
+  let images = el.querySelectorAll('img');
+  images.forEach(function(image) {
+      image.style.opacity = '0'
+  });
+}); */
+
+
 
 
 
