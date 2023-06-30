@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="pico-1.5.10\css\pico.min.css">
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+    <body>
+        <main class="container">
+            <h4>When can I clock out?</h4>
+
+            <div>
+                <span>Clock out at: </span>
+                <h1 class="displayResultText"></h1>
+            </div>
+
+            <form>
+                <div class="grid">
+                    <label for="currentTime">
+                        Hours worked today (ex: 6.05)
+                        <input type="number" id="currentTime" name="currentTime" placeholder="Enter the amount of hours worked today" required>
+                    </label>
+                    <label for="totalTime">
+                        Hours worked this pay period (ex: 41.25)
+                        <input type="number" id="totalTime" name="totalTime" placeholder="Enter the current total amount of hours worked so far" required>
+                    </label>
+                    <label for="payPeriodDay">
+                        Days worked so far this pay period (ex: 6)
+                        <input type="number" id="payPeriodDay" name="payPeriodDay" placeholder="Enter a number of days including today" required>
+                    </label>
+                </div>
+                <button type="submit" id="submitButton">Submit</button>
+            </form>
+
+
+            
+
+        </main>
+        <script src="popup.js"></script>
+        <!-- <script src="content.js"></script> -->
+    </body>
+</html>

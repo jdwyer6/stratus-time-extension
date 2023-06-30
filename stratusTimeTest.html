@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stratus Time Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<!-- <body>
+    <table style="width:100%">
+        <tr>
+          <td>
+            <label class="labelText" id="lblCurrentShiftTimeInfo">6.23</label>
+          </td>
+        </tr>
+      </table>
+
+      <div class="emp-timecard-container-gridItems">
+        <div class="TimeCardGridDataRow">Row</div>
+        <div class="TimeCardGridDataRow">Row</div>
+        <div class="TimeCardGridDataRow">Row</div>
+        <div class="TimeCardGridDataRow">Row</div>
+        <div class="TimeCardGridDataRow">Row</div>
+      </div>
+
+      <div class="emp-timecard-container-totals">30</div>
+</body> -->
+<body id="emp-main-app-body" style="min-width: 980px; overflow: hidden auto; display: block; visibility: visible;">
+    <div id="divTopContainer" style="height: 100%; width: 100%; position: relative">
+       <!--div class="background">
+          </div-->
+       <div class="shadow">
+       </div>
+       <img id="imgLogoBrand" src="/Globals/Image?key=brand&amp;pos=right&amp;id=157&amp;file=e9bc8955-92ec-473c-8352-1ad100cb6a51.png" alt="">
+       <img id="imgLogoClient" src="/Globals/Image?key=brand&amp;pos=left&amp;id=157&amp;file=8bde1d62-f057-41ef-9418-f0815ce9ae5f.png" alt="">
+       <!-- =========================================
+          HEADER-TOP -->
+       <div id="divHeaderPane">
+          <div class="shadowHeaderPane">
+          </div>
+          <!-- Left Corner Menu Links -->
+          <div class="app-userlinks-left">
+             <div class="app-userlinks-cell" style="text-align: left">
+                <span class="app-link" style="color: #000" id="btnHelp" title="Help">
+                <img id="imgHelp" src="/Images/icons/question_16x16.png" style="position: relative; top: 2px; right: 2px;" alt="help">Help
+                </span>
+                <span class="app-link" style="color: #000;display:none" id="btnExternalTraining" title="Training">
+                <img id="imgExternalTraining" src="/Images/icons/training_16x16.png" style="position: relative;top : 2px;right: 2px;" alt="externalTraining">Training
+                </span>
+             </div>
+          </div>
+          <!-- Time Stamp -->
+          <div id="divCurrentTime">07:01 AM</div>
+          <!-- Right Corner Menus -->
+          <div class="app-userlinks-right">
+             <div class="app-userlinks-cell">
+                <div id="div-usr-menu-container" class="app-usernav-select usrMenu_lnk" title="User Menu">
+                   <div class="app-usernav-select-cell" id="div-usr-menu-icon" style="float:left; width:24px;"><img style="width: 16px; height: 16px; vertical-align:top;" src="/images/icons/businessman_24x24.png"></div>
+                   <div id="_userNameID11688126414257" testid="div-usr-menu-title" class="app-usernav-select-cell showEllipsisOnOverflow" style="width: 70%;">Dwyer, Jacob</div>
+                   <div id="div-usr-menu-down" class="app-usernav-select-cell" style="width:24px;"><img id="img-usr-menu-down" style="vertical-align:bottom;" src="/images/icons/navigate_close.png"></div>
+                   <div id="div-usr-menu-opts" class="app-usernav-opts">
+                      <div class="app-usernav-opts-icons">
+                         <img id="img-usr-menu-emp" src="/images/icons/businessman_24x24.png"><span class="app-usernav-separator"></span>
+                         <div class="app-usernav-label">&nbsp;</div>
+                      </div>
+                      <div id="div-usr-menu-chng-pwd" class="app-usernav-links"><img id="img-usr-menu-chng-pwd" src="/images/icons/bullet_triangle_grey.png"><span id="span-usr-menu-chng-pwd">Change Password</span></div>
+                      <div id="div-usr-menu-logout" class="app-usernav-links"><img id="img-usr-menu-logout" src="/images/icons/bullet_triangle_grey.png"><span id="span-usr-menu-logout">Log Out</span></div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <!-- =========================================
+          MAIN CONTENT -->
+       <div id="ContentPane" style="overflow-y: hidden;">
+          <div style="height: 17%; margin-top: 1%; position: relative">
+             <div id="divHeaderWidgetParent" style="height: 100%; display: block;">
+                <div id="divShadowHeaderWidget" class="ui-corner-all">
+                </div>
+                <div id="divHeaderWidget" class="ui-corner-all" >
+                   <div style="height: 15%">
+                      <label class="labelText" style="text-align: center; font-size: 10pt; font-weight: bold;
+                         position: relative; top: 5px;">
+                      Last Punch:
+                      </label>
+                      <label class="labelText showEllipsisOnOverflow" id="lblLastPunch" style="text-align: center;
+                         position: relative; font-size: 8pt; top: 7px;">Clock In - 06/30/2023 06:32 AM</label>
+                   </div>
+                   <div id="divFishEyePlaceHolderParent" style="position: relative; margin-top: 15px; width: 100%;">
+                      <div id="divFishEyePlaceHolder" class="jqDocked" style="position: absolute; top: 0px; left: 0px; width: 100%; visibility: visible;">
+                         <div style="position: relative; padding: 0px; width: 116px; height: 32px; margin: 0px auto;" class="jqDockWrap">
+                            <div style="position: absolute; top: 0px; left: 2px; padding: 0px; margin: 0px; overflow: visible; height: 32px; width: 112px; cursor: pointer;" id="jqDock0" class="jqDock">
+                               <div style="position: relative; padding: 0px; margin: 0px; border: 0px none; background-color: transparent; float: left; filter: inherit;" class="jqDockItem jqDockMouse0 jqDockExpand">
+                                  <div style="position: relative; padding: 0px; margin: -3px 0px -13px; border: 0px none; background-color: transparent; height: 48px; width: 48px; filter: inherit;">
+                                     <img name="2" style="width: 100%; height: 100%; position: relative; padding: 0px; margin: 0px; border-width: 0px; border-style: none; display: block; filter: inherit;" class="imgHeaderWidgetClick jqDockMouse0" src="/images/EmployeeHome/In.png" id="imgClockIn" alt="">
+                                     <div class="jqDockLabel jqDockLabelImage" style="position: absolute; margin: 0px; display: none; inset: auto auto 0px 0px; filter: inherit; white-space: nowrap; font-weight: bold; color: white; text-align: center;">
+                                        <div class="jqDockLabelText" style="filter: inherit;">
+                                           <div style="position: relative; top: 20px; font-size: 10pt; filter: inherit;">Clock In</div>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                               <div style="position: relative; padding: 0px; margin: 0px; border: 0px none; background-color: transparent; float: left; filter: inherit;" class="jqDockItem jqDockMouse1 jqDockExpand">
+                                  <div style="position: relative; padding: 0px; margin: -6px 0px -26px; border: 0px none; background-color: transparent; height: 64px; width: 64px; filter: inherit;">
+                                     <img name="3" style="width: 100%; height: 100%; position: relative; padding: 0px; margin: 0px; border-width: 0px; border-style: none; display: block; filter: inherit;" class="imgHeaderWidgetClick jqDockMouse1" src="/images/EmployeeHome/Out.png" id="imgClockOut" alt="">
+                                     <div class="jqDockLabel jqDockLabelImage" style="position: absolute; margin: 0px; display: block; inset: auto auto 0px -6px; filter: inherit; white-space: nowrap; font-weight: bold; color: white; text-align: center;">
+                                        <div class="jqDockLabelText" style="filter: inherit;">
+                                           <div style="position: relative; top: 20px; font-size: 10pt; filter: inherit;">Clock Out</div>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <!-- Compact Mode Time Stamp -->
+                <div id="divCompactModeCurrentTime" style="display: none">
+                </div>
+                <!-- Right Corner Menus -->
+                <div id="divCompactModeUserMenu" style="display: none" class="app-userlinks-right">
+                   <div style="margin: 4px 4px 0px 4px">
+                      <div id="btnCompactModeUserMenu">
+                      </div>
+                   </div>
+                </div>
+                <div id="divHeaderTopRightWidget" class="ui-corner-all" style="display: block;">
+                   <div class="headerTopRightWidgetContent" style="position: relative; top: 8px;">
+                      <table border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
+                         <tbody>
+                            <tr>
+                               <td style="width: 160px; text-align: right;">
+                                  <label class="labelText" id="lblCurrentShiftTimeHeaderInfo" style="text-align: right;
+                                     font-size: 10pt; font-weight: bold; width: 100%;">Shift Duration:</label>
+                                  <br>
+                               </td>
+                               <td style="text-align: right;">
+                                  <label class="labelText showEllipsisOnOverflow" id="lblCurrentShiftTimeInfo" style="text-align: right;
+                                     font-size: 8pt;">0.48</label>
+                               </td>
+                               <td style="width: 50px;" id="tdWidgetRight">
+                                  &nbsp;
+                               </td>
+                            </tr>
+                            <tr>
+                               <td style="text-align: right;">
+                                  <label class="labelText" style="text-align: right; font-size: 10pt; font-weight: bold;
+                                     width: 100%;">
+                                  Today’s Hours:
+                                  </label>
+                               </td>
+                               <td style="text-align: right;">
+                                  <label class="labelText showEllipsisOnOverflow" id="lblCurrentWorkShiftTimeInfo" style="text-align: right; font-size: 8pt;">0.48</label>
+                               </td>
+                               <td>
+                                  &nbsp;
+                               </td>
+                            </tr>
+                         </tbody>
+                      </table>
+                   </div>
+                   <div class="shadowHeaderTopRightWidget">
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div id="divIcons" style="height: 72%; width: 80%;">
+             <!-- Top Icon Rows -->
+             <div style="width: 100%; height: 47%; margin-top: 3%;">
+                <div style="height: 10%; margin-bottom: 5px; white-space: nowrap">
+                   <div class="iconsDiv">
+                      <label id="lblActions" class="labelText iconsHeader">
+                      Actions</label>
+                   </div>
+                   <div class="iconsDiv">
+                      <label id="lblSchedules" class="labelText iconsHeader">
+                      Schedules</label>
+                   </div>
+                   <div class="iconsDiv">
+                      <label id="lblTimeOff" class="labelText iconsHeader">
+                      Time Off</label>
+                   </div>
+                </div>
+                <div style="height: 90%;">
+                   <div id="divActions" class="iconsDiv">
+                      <img class="iconShadow" alt="" src="/Images/EmployeeHome/shadow.png" style="opacity: 0.6;">
+                      <div style="display:inline-block; position: relative; "><img class="empHomeIcon" src="data:image/png;base64,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" title="Actions (Shift + P)" style="cursor: pointer;"><img class="empHomeIcon" src="data:image/png;base64,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" title="Actions (Shift + P)" style="cursor: pointer;"></div>
+                   </div>
+                   <div id="divSchedules" class="iconsDiv">
+                      <img class="iconShadow" alt="" src="/Images/EmployeeHome/shadow.png" style="opacity: 0.6;">
+                      <div style="display:inline-block; position: relative; "><img class="empHomeIcon" src="data:image/png;base64,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" title="Schedules (Shift + W)" style="cursor: pointer;"><img class="empHomeIcon" src="data:image/png;base64,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" title="Schedules (Shift + W)" style="cursor: pointer;"></div>
+                   </div>
+                   </div>
+                   <div id="divReports" class="iconsDiv">
+                      <img class="iconShadow" src="/Images/EmployeeHome/shadow.png" style="opacity: 0.6;">
+                      <img style="position: relative; height: 165px; width: 195px; cursor: pointer;" class="empHomeIcon" src="/Images/EmployeeHome/Reports.png" title="Reports (Shift + R)">
+                   </div>
+                </div>
+             </div>
+          </div>
+          <!-- TotalPass Cloud -->
+       </div>
+    </div>
+    <div id="googlemap-canvas-emp"> </div>
+    <div style="position: absolute; text-align: center; vertical-align: middle; z-index: 99999; width: 160px; height: 20px; left: 868.5px; top: 28px; display: none;" class="ui-corner-all serverCallStatus" id="pleaseWaitDiv">
+       <div style="padding: 1px; position: absolute; top: 50%; left: 50%; margin-top: -12px; margin-left: -60px; font-size: 1.1em; border-top: 0px;"><span id="pleaseWait"><img src="/images/icons/ui-anim_basic_16x16.gif" style="margin-top:4px;vertical-align:bottom">&nbsp;Please Wait ...</span></div>
+    </div>
+    <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-1" style="display: none; z-index: 1000; outline: 0px; position: absolute;">
+       <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span class="ui-dialog-title" id="ui-dialog-title-1">Session Expired</span><a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span class="ui-icon ui-icon-closethick">close</span></a></div>
+       <div style="background: none; border: none; display: block;" class="ui-state-default tableRowCell ui-dialog-content ui-widget-content">
+          <form>
+             Password<input type="password">
+             <div class="error tableRowCell">&nbsp;</div>
+             <br><input type="button" value="Cancel" style="width:75px" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false"><input type="submit" value="Ok" style="width:75px;" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+          </form>
+       </div>
+       <div class="ui-resizable-handle ui-resizable-n" style="z-index: 1000;"></div>
+       <div class="ui-resizable-handle ui-resizable-e" style="z-index: 1000;"></div>
+       <div class="ui-resizable-handle ui-resizable-s" style="z-index: 1000;"></div>
+       <div class="ui-resizable-handle ui-resizable-w" style="z-index: 1000;"></div>
+       <div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se" style="z-index: 1000;"></div>
+       <div class="ui-resizable-handle ui-resizable-sw" style="z-index: 1000;"></div>
+       <div class="ui-resizable-handle ui-resizable-ne" style="z-index: 1000;"></div>
+       <div class="ui-resizable-handle ui-resizable-nw" style="z-index: 1000;"></div>
+    </div>
+    <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-divChangePassword" style="display: none; z-index: 1000; outline: 0px; position: absolute;">
+       <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span class="ui-dialog-title" id="ui-dialog-title-divChangePassword">Change Password</span><a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span class="ui-icon ui-icon-closethick">close</span></a></div>
+       <div id="divChangePassword" class="ui-dialog-content ui-widget-content">
+          <form id="frmChangePassword" class="default" action="" novalidate="novalidate">
+             <table class="default">
+                <tbody>
+                   <tr id="trOldPassword">
+                      <td class="defaultFieldLabel">
+                         <label><b>Old Password:</b></label><br>
+                         <input style="width:300px" type="password" class="textbox" id="txtOldPassword" title="Old Password">
+                      </td>
+                   </tr>
+                   <tr>
+                      <td class="defaultFieldLabel">
+                         <label><b>New Password:</b></label><br>
+                         <input style="width:300px" type="password" id="txtNewPassword" class="textbox" title="New Password" name="txtNewPassword">
+                      </td>
+                   </tr>
+                   <tr>
+                      <td class="defaultFieldLabel">
+                         <label><b>Confirm New Password:</b></label><br>
+                         <input style="width:300px" type="password" id="txtConfirmNewPassword" class="textbox required" title="Confirm New Password" name="txtConfirmNewPassword">
+                      </td>
+                   </tr>
+                   <tr>
+                      <td style="text-align: center; padding-top: 10px" colspan="2" class="tableRowCell">
+                         <button id="btnCancel" type="button" class="button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" title="Close this dialog without changing password" role="button" aria-disabled="false"><img src="/Images/icons/undo.png" class="ui-button-icon-primary ui-icon undoButton"><span class="ui-button-text">Cancel</span></button>
+                         <button id="btnSave" type="submit" class="button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" title="Change the password" role="button" aria-disabled="false"><img src="/Images/icons/floppy_disk_blue.png" class="ui-button-icon-primary ui-icon saveButton"><span class="ui-button-text">Save</span></button>
+                      </td>
+                   </tr>
+                   <tr>
+                      <td style="width: 100%; text-align: left; padding-left: 10px; padding-right: 10px" colspan="2" class="tableRowCell" id="cellPasswordPolicyConstraints">
+                      </td>
+                   </tr>
+                </tbody>
+             </table>
+          </form>
+       </div>
+       <div class="ui-resizable-handle ui-resizable-n" style="z-index: 1000;"></div>
+       <div class="ui-resizable-handle ui-resizable-e" style="z-index: 1000;"></div>
+       <div class="ui-resizable-handle ui-resizable-s" style="z-index: 1000;"></div>
+       <div class="ui-resizable-handle ui-resizable-w" style="z-index: 1000;"></div>
+       <div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se" style="z-index: 1000;"></div>
+       <div class="ui-resizable-handle ui-resizable-sw" style="z-index: 1000;"></div>
+       <div class="ui-resizable-handle ui-resizable-ne" style="z-index: 1000;"></div>
+       <div class="ui-resizable-handle ui-resizable-nw" style="z-index: 1000;"></div>
+    </div>
+    <div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="display: none;">
+       <div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">
+          <a class="ui-datepicker-prev ui-corner-all" onclick="DP_jQuery_1688126414089.datepicker._adjustDate('#dp1688126414094', -1, 'M');" title="Prev"><span class="ui-icon ui-icon-circle-triangle-w">Prev</span></a><a class="ui-datepicker-next ui-corner-all" onclick="DP_jQuery_1688126414089.datepicker._adjustDate('#dp1688126414094', +1, 'M');" title="Next"><span class="ui-icon ui-icon-circle-triangle-e">Next</span></a>
+          <div class="ui-datepicker-title">
+             <select class="ui-datepicker-month" onchange="DP_jQuery_1688126414089.datepicker._selectMonthYear('#dp1688126414094', this, 'M');">
+                <option value="0">Jan</option>
+                <option value="1"> Feb</option>
+                <option value="2"> Mar</option>
+                <option value="3"> Apr</option>
+                <option value="4"> May</option>
+                <option value="5"> Jun</option>
+                <option value="6" selected="selected">Jul</option>
+                <option value="7"> Aug</option>
+                <option value="8"> Sep</option>
+                <option value="9"> Oct</option>
+                <option value="10"> Nov</option>
+                <option value="11"> Dec</option>
+             </select>
+             <select class="ui-datepicker-year" onchange="DP_jQuery_1688126414089.datepicker._selectMonthYear('#dp1688126414094', this, 'Y');">
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023" selected="selected">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+                <option value="2031">2031</option>
+                <option value="2032">2032</option>
+                <option value="2033">2033</option>
+             </select>
+          </div>
+       </div>
+       <table class="ui-datepicker-calendar">
+          <thead>
+             <tr>
+                <th class="ui-datepicker-week-end"><span title="Sunday">Su</span></th>
+                <th><span title=" Monday">Mo</span></th>
+                <th><span title=" Tuesday">Tu</span></th>
+                <th><span title=" Wednesday">We</span></th>
+                <th><span title=" Thursday">Th</span></th>
+                <th><span title=" Friday">Fr</span></th>
+                <th class="ui-datepicker-week-end"><span title=" Saturday">Sa</span></th>
+             </tr>
+          </thead>
+          <tbody>
+             <tr>
+                <td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td>
+                <td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td>
+                <td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td>
+                <td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td>
+                <td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td>
+                <td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td>
+                <td class=" ui-datepicker-week-end " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">1</a></td>
+             </tr>
+             <tr>
+                <td class=" ui-datepicker-week-end " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">2</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">3</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">4</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">5</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">6</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">7</a></td>
+                <td class=" ui-datepicker-week-end " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">8</a></td>
+             </tr>
+             <tr>
+                <td class=" ui-datepicker-week-end " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">9</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">10</a></td>
+                <td class="  ui-datepicker-current-day" onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default ui-state-active" href="#">11</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">12</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">13</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">14</a></td>
+                <td class=" ui-datepicker-week-end " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">15</a></td>
+             </tr>
+             <tr>
+                <td class=" ui-datepicker-week-end " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">16</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">17</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">18</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">19</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">20</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">21</a></td>
+                <td class=" ui-datepicker-week-end " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">22</a></td>
+             </tr>
+             <tr>
+                <td class=" ui-datepicker-week-end " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">23</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">24</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">25</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">26</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">27</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">28</a></td>
+                <td class=" ui-datepicker-week-end " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">29</a></td>
+             </tr>
+             <tr>
+                <td class=" ui-datepicker-week-end " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">30</a></td>
+                <td class=" " onclick="DP_jQuery_1688126414089.datepicker._selectDay('#dp1688126414094',6,2023, this);return false;"><a class="ui-state-default" href="#">31</a></td>
+                <td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td>
+                <td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td>
+                <td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td>
+                <td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td>
+                <td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td>
+             </tr>
+          </tbody>
+       </table>
+       <div class="ui-datepicker-buttonpane ui-widget-content"><button type="button" class="ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all" onclick="DP_jQuery_1688126414089.datepicker._gotoToday('#dp1688126414094');">Today</button><button type="button" class="ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all" onclick="DP_jQuery_1688126414089.datepicker._hideDatepicker();">Done</button></div>
+    </div>
+    <div class="ui-dialog ui-widget ui-corner-all ui-draggable dialogWithoutTitleBar noShadow" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-2" style="display: block; z-index: 1002; outline: 0px; position: absolute; overflow: visible; height: auto; width: 898px; top: 333.5px; left: 516.5px;">
+       <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span class="ui-dialog-title" id="ui-dialog-title-2">&nbsp;</span><a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span class="ui-icon ui-icon-closethick">close</span></a></div>
+       <div class="TimeCardPopUp emp-popup ui-dialog-content" style="display: block; overflow: visible; width: auto; min-height: 0px; height: 544.76px;" scrolltop="0" scrollleft="0">
+          <img src="/Images/EmployeeHome/ScheduleBackground.png"><img class="emp-popup-backButton" src="/Images/EmployeeHome/back-button.png"><img id="imgTCTabTimeCard" style="top: 79px; display: inline;" class="emp-popup-leftTabIcon emp-popup-tabIcon-selected" src="/EmployeeHome/EmployeeHome/GetTimeCardTabIcon?t=e61d31c914d7447599521ade42785b51"><img id="imgTCTabPayAdjustment" style="top: 189px; display: inline;" class="emp-popup-leftTabIcon" src="/EmployeeHome/EmployeeHome/GetPayAdjustmentsTabIcon?t=e61d31c914d7447599521ade42785b51"><img id="imgPreviousPayPeriod" style="left:80px" class="emp-popup-topTabIcon" src="/Images/EmployeeHome/tab-top.png"><span class="emp-popup-topTabTitle" style="left:81px" title="<< Previous">&lt;&lt; Previous</span><img id="imgCurrentPayPeriod" style="left:182px" class="emp-popup-topTabIcon" src="/Images/EmployeeHome/tab-top.png"><span class="emp-popup-topTabTitle" style="left:183px" title="Current Pay Period">Current Pay Period</span><img id="imgNextPayPeriod" style="left:284px" class="emp-popup-topTabIcon" src="/Images/EmployeeHome/tab-top.png"><span class="emp-popup-topTabTitle" style="left:285px" title="Next >>">Next &gt;&gt;</span><img id="imgPreviousWeek" style="left:511px" class="emp-popup-topTabIcon" src="/Images/EmployeeHome/tab-top.png"><span class="emp-popup-topTabTitle" style="left:512px" title="<< Previous">&lt;&lt; Previous</span><img id="imgCurrentWeek" style="left:613px" class="emp-popup-topTabIcon" src="/Images/EmployeeHome/tab-top.png"><span class="emp-popup-topTabTitle" style="left:614px" title="Current Week">Current Week</span><img id="imgNextWeek" style="left:715px" class="emp-popup-topTabIcon" src="/Images/EmployeeHome/tab-top.png"><span class="emp-popup-topTabTitle" style="left:716px" title="Next >>">Next &gt;&gt;</span>
+          <div class="divTimeCardTab emp-popup-container" style="display: block;">
+             <span class="showEllipsisOnOverflow emp-popup-container-title">Time Card</span>
+             <div style="height: 26px; top: 11px; width: 170px; position: absolute; left: 335px; text-align:center"><input type="text" class="emp-popup-timecard-dateTextBox hasDatepicker" id="dp1688126414091"><span style="color:#2f8256"> - </span><input type="text" class="emp-popup-timecard-dateTextBox hasDatepicker" id="dp1688126414092"></div>
+             <div style="left:10px;top:37px;position:absolute">
+                <div style="width: 65px; text-align:center" class="emp-popup-container-items">Approval</div>
+                <div style="width: 45px; text-align:left; margin-left:10px" class="emp-popup-container-items">Type</div>
+                <div style="width: 30px; text-align:left; margin-left:10px; margin-right:10px" class="emp-popup-container-items">Day</div>
+                <div style="width: 65px; text-align:center; margin-right:20px" class="emp-popup-container-items">Date</div>
+                <div style="width: 70px; text-align:left" class="emp-popup-container-items">Time In</div>
+                <div style="width: 84px; text-align:left" class="emp-popup-container-items">Time Out</div>
+                <div style="width: 125px; text-align:left" class="emp-popup-container-items">Labor Level</div>
+                <div style="width: 50px; text-align:right; margin-left:10px" class="emp-popup-container-items">Reg</div>
+                <div style="width: 50px; text-align:right; margin-left:10px" class="emp-popup-container-items">OT</div>
+                <div style="width: 50px; text-align:right; margin-left:10px" class="emp-popup-container-items">Unpaid</div>
+                <div style="width: 50px; text-align:center" class="emp-popup-container-items">Notes</div>
+             </div>
+             <div style="width:417px; left:10px; top:52px" class="emp-popup-hrLine"></div>
+             <div style="left:429px; top:52px" class="emp-popup-hrLine"></div>
+             <div class="emp-timecard-container-gridItems">
+                <div style="width: 790px; height: 20px; border-radius: 3px; background-color: white;" class="TimeCardGridDataRow TimeCard_ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c">
+                   <div style="width: 65px; text-align:center" class="emp-timecard-container-gridRows"><img id="imgTCApproval0" style="text-align:center; vertical-align:middle;cursor:pointer" class="timeCardCollapsedView" src="/Images/icons/viewdetails.png" title="Expand" data="ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c" uniqueid="1687928400000ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c"><input id="chkTCApproval0" type="checkbox" style="visibility: visible; margin-left: 5px; text-align: center; vertical-align: middle; cursor: pointer;" data="ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c"><img style="text-align:center; vertical-align:middle; width:20px; height:20px" src="/Images/icons/bullet_ball_glass_grey.png"></div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 45px; text-align:left; margin-left:10px" title="Work">Work</div>
+                   <div style="width: 30px; text-align:left; margin-left:10px; margin-right:10px" class="emp-timecard-container-gridRows"> Wed</div>
+                   <div style="width: 65px; text-align:right; margin-right:20px" class="emp-timecard-container-gridRows">06/28/2023</div>
+                   <div style="width: 70px; text-align:left" class="emp-timecard-container-gridRows">07:14 AM</div>
+                   <div style="width: 84px; text-align:left" class="emp-timecard-container-gridRows">03:23 PM</div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 125px; text-align:left" title="Web Technology - Web Development">Web Technology - Web Development</div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="7.65">7.65</div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.50">0.50</div>
+                </div>
+                <div class="emp-timecard-containerDetailRow" style="display: none;">
+                   <div style="width: 790px ; height: 20px" class="TimeCardGridDataDetailRow TimeCardDetail_ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c">
+                      <div style="width: 65px; text-align:center" class="emp-timecard-container-gridRows"><img style="text-align: center; visibility: visible; vertical-align: middle; cursor: pointer;" src="/Images/icons/zoom_out.png" title="Collapse" data="ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c" uniqueid="1687928400000ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c"><input class="checkBox_ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c" type="checkbox" style="visibility: visible; margin-left: 5px; text-align: center; vertical-align: middle; cursor: pointer;"><img style="text-align:center; vertical-align:middle; width:20px; height:20px" src="/Images/icons/bullet_ball_glass_grey.png"></div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 45px; text-align:left; margin-left:10px" title="Work">Work</div>
+                      <div style="width: 30px; text-align:left; margin-left:10px; margin-right:10px" class="emp-timecard-container-gridRows"> Wed</div>
+                      <div style="width: 65px; text-align:right; margin-right:20px" class="emp-timecard-container-gridRows">06/28/2023</div>
+                      <div style="width: 70px; text-align:left" class="emp-timecard-container-gridRows">07:14 AM</div>
+                      <div style="width: 84px; text-align:left" class="emp-timecard-container-gridRows">12:14 PM</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 125px; text-align:left" title="Web Technology - Web Development">Web Technology - Web Development</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="5.00">5.00</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                   </div>
+                   <div style="width: 790px ; height: 20px" class="TimeCardGridDataDetailRow TimeCardDetail_ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c">
+                      <div style="width: 65px; text-align:center" class="emp-timecard-container-gridRows"><img style="text-align:center; visibility:hidden; vertical-align:middle; cursor:pointer" src="/Images/icons/zoom_out.png" title="Collapse" data="ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c" uniqueid="1687928400000ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c"><input class="checkBox_ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c" type="checkbox" style="visibility: visible; margin-left: 5px; text-align: center; vertical-align: middle; cursor: pointer;"><img style="text-align:center; vertical-align:middle; width:20px; height:20px" src="/Images/icons/bullet_ball_glass_grey.png"></div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 45px; text-align:left; margin-left:10px" title="Meal">Meal</div>
+                      <div style="width: 30px; text-align:left; margin-left:10px; margin-right:10px" class="emp-timecard-container-gridRows"></div>
+                      <div style="width: 65px; text-align:right; margin-right:20px" class="emp-timecard-container-gridRows"></div>
+                      <div style="width: 70px; text-align:left" class="emp-timecard-container-gridRows">12:14 PM</div>
+                      <div style="width: 84px; text-align:left" class="emp-timecard-container-gridRows">12:44 PM</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 125px; text-align:left" title="Web Technology - Web Development">Web Technology - Web Development</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.50">0.50</div>
+                   </div>
+                   <div style="width: 790px ; height: 20px" class="TimeCardGridDataDetailRow TimeCardDetail_ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c">
+                      <div style="width: 65px; text-align:center" class="emp-timecard-container-gridRows"><img style="text-align:center; visibility:hidden; vertical-align:middle; cursor:pointer" src="/Images/icons/zoom_out.png" title="Collapse" data="ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c" uniqueid="1687928400000ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c"><input class="checkBox_ffe437fb-f2b4-4dd4-8732-6a8d1b716c6c" type="checkbox" style="visibility: visible; margin-left: 5px; text-align: center; vertical-align: middle; cursor: pointer;"><img style="text-align:center; vertical-align:middle; width:20px; height:20px" src="/Images/icons/bullet_ball_glass_grey.png"></div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 45px; text-align:left; margin-left:10px" title="Work">Work</div>
+                      <div style="width: 30px; text-align:left; margin-left:10px; margin-right:10px" class="emp-timecard-container-gridRows"></div>
+                      <div style="width: 65px; text-align:right; margin-right:20px" class="emp-timecard-container-gridRows"></div>
+                      <div style="width: 70px; text-align:left" class="emp-timecard-container-gridRows">12:44 PM</div>
+                      <div style="width: 84px; text-align:left" class="emp-timecard-container-gridRows">03:23 PM</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 125px; text-align:left" title="Web Technology - Web Development">Web Technology - Web Development</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="2.65">2.65</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                   </div>
+                </div>
+                <div style="width: 790px ; height: 20px; border-radius: 3px 3px 3px 3px" class="TimeCardGridDataRow TimeCard_6025a8cd-895a-431b-bf94-ffe21e2b8bb3">
+                   <div style="width: 65px; text-align:center" class="emp-timecard-container-gridRows"><img id="imgTCApproval1" style="text-align:center; vertical-align:middle;cursor:pointer" class="timeCardCollapsedView" src="/Images/icons/viewdetails.png" title="Expand" data="6025a8cd-895a-431b-bf94-ffe21e2b8bb3" uniqueid="16880148000006025a8cd-895a-431b-bf94-ffe21e2b8bb3"><input id="chkTCApproval1" type="checkbox" style="visibility: visible; margin-left: 5px; text-align: center; vertical-align: middle; cursor: pointer;" data="6025a8cd-895a-431b-bf94-ffe21e2b8bb3"><img style="text-align:center; vertical-align:middle; width:20px; height:20px" src="/Images/icons/bullet_ball_glass_grey.png"></div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 45px; text-align:left; margin-left:10px" title="Work">Work</div>
+                   <div style="width: 30px; text-align:left; margin-left:10px; margin-right:10px" class="emp-timecard-container-gridRows"> Thu</div>
+                   <div style="width: 65px; text-align:right; margin-right:20px" class="emp-timecard-container-gridRows">06/29/2023</div>
+                   <div style="width: 70px; text-align:left" class="emp-timecard-container-gridRows">06:58 AM</div>
+                   <div style="width: 84px; text-align:left" class="emp-timecard-container-gridRows">03:32 PM</div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 125px; text-align:left" title="Web Technology - Web Development">Web Technology - Web Development</div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="8.07">8.07</div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.50">0.50</div>
+                </div>
+                <div class="emp-timecard-containerDetailRow" style="display: none;">
+                   <div style="width: 790px ; height: 20px" class="TimeCardGridDataDetailRow TimeCardDetail_6025a8cd-895a-431b-bf94-ffe21e2b8bb3">
+                      <div style="width: 65px; text-align:center" class="emp-timecard-container-gridRows"><img style="text-align: center; visibility: visible; vertical-align: middle; cursor: pointer;" src="/Images/icons/zoom_out.png" title="Collapse" data="6025a8cd-895a-431b-bf94-ffe21e2b8bb3" uniqueid="16880148000006025a8cd-895a-431b-bf94-ffe21e2b8bb3"><input class="checkBox_6025a8cd-895a-431b-bf94-ffe21e2b8bb3" type="checkbox" style="visibility: visible; margin-left: 5px; text-align: center; vertical-align: middle; cursor: pointer;"><img style="text-align:center; vertical-align:middle; width:20px; height:20px" src="/Images/icons/bullet_ball_glass_grey.png"></div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 45px; text-align:left; margin-left:10px" title="Work">Work</div>
+                      <div style="width: 30px; text-align:left; margin-left:10px; margin-right:10px" class="emp-timecard-container-gridRows"> Thu</div>
+                      <div style="width: 65px; text-align:right; margin-right:20px" class="emp-timecard-container-gridRows">06/29/2023</div>
+                      <div style="width: 70px; text-align:left" class="emp-timecard-container-gridRows">06:58 AM</div>
+                      <div style="width: 84px; text-align:left" class="emp-timecard-container-gridRows">11:58 AM</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 125px; text-align:left" title="Web Technology - Web Development">Web Technology - Web Development</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="5.00">5.00</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                   </div>
+                   <div style="width: 790px ; height: 20px" class="TimeCardGridDataDetailRow TimeCardDetail_6025a8cd-895a-431b-bf94-ffe21e2b8bb3">
+                      <div style="width: 65px; text-align:center" class="emp-timecard-container-gridRows"><img style="text-align:center; visibility:hidden; vertical-align:middle; cursor:pointer" src="/Images/icons/zoom_out.png" title="Collapse" data="6025a8cd-895a-431b-bf94-ffe21e2b8bb3" uniqueid="16880148000006025a8cd-895a-431b-bf94-ffe21e2b8bb3"><input class="checkBox_6025a8cd-895a-431b-bf94-ffe21e2b8bb3" type="checkbox" style="visibility: visible; margin-left: 5px; text-align: center; vertical-align: middle; cursor: pointer;"><img style="text-align:center; vertical-align:middle; width:20px; height:20px" src="/Images/icons/bullet_ball_glass_grey.png"></div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 45px; text-align:left; margin-left:10px" title="Meal">Meal</div>
+                      <div style="width: 30px; text-align:left; margin-left:10px; margin-right:10px" class="emp-timecard-container-gridRows"></div>
+                      <div style="width: 65px; text-align:right; margin-right:20px" class="emp-timecard-container-gridRows"></div>
+                      <div style="width: 70px; text-align:left" class="emp-timecard-container-gridRows">11:58 AM</div>
+                      <div style="width: 84px; text-align:left" class="emp-timecard-container-gridRows">12:28 PM</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 125px; text-align:left" title="Web Technology - Web Development">Web Technology - Web Development</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.50">0.50</div>
+                   </div>
+                   <div style="width: 790px ; height: 20px" class="TimeCardGridDataDetailRow TimeCardDetail_6025a8cd-895a-431b-bf94-ffe21e2b8bb3">
+                      <div style="width: 65px; text-align:center" class="emp-timecard-container-gridRows"><img style="text-align:center; visibility:hidden; vertical-align:middle; cursor:pointer" src="/Images/icons/zoom_out.png" title="Collapse" data="6025a8cd-895a-431b-bf94-ffe21e2b8bb3" uniqueid="16880148000006025a8cd-895a-431b-bf94-ffe21e2b8bb3"><input class="checkBox_6025a8cd-895a-431b-bf94-ffe21e2b8bb3" type="checkbox" style="visibility: visible; margin-left: 5px; text-align: center; vertical-align: middle; cursor: pointer;"><img style="text-align:center; vertical-align:middle; width:20px; height:20px" src="/Images/icons/bullet_ball_glass_grey.png"></div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 45px; text-align:left; margin-left:10px" title="Work">Work</div>
+                      <div style="width: 30px; text-align:left; margin-left:10px; margin-right:10px" class="emp-timecard-container-gridRows"></div>
+                      <div style="width: 65px; text-align:right; margin-right:20px" class="emp-timecard-container-gridRows"></div>
+                      <div style="width: 70px; text-align:left" class="emp-timecard-container-gridRows">12:28 PM</div>
+                      <div style="width: 84px; text-align:left" class="emp-timecard-container-gridRows">03:32 PM</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 125px; text-align:left" title="Web Technology - Web Development">Web Technology - Web Development</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="3.07">3.07</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                      <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                   </div>
+                </div>
+                <div style="width: 790px; height: 20px; border-radius: 3px; background-color: white;" class="TimeCardGridDataRow TimeCard_4cdffba8-9cd6-46b2-ac8d-180bd550b710">
+                   <div style="width: 65px; text-align:center" class="emp-timecard-container-gridRows"><img id="imgTCApproval2" style="text-align: center; vertical-align: middle; cursor: pointer; visibility: hidden; opacity: 0.3;" class="timeCardCollapsedView" src="/Images/icons/viewdetails.png" title="Expand" data="4cdffba8-9cd6-46b2-ac8d-180bd550b710" uniqueid="16881012000004cdffba8-9cd6-46b2-ac8d-180bd550b710"><input id="chkTCApproval2" type="checkbox" style="visibility: visible; margin-left: 5px; text-align: center; vertical-align: middle; cursor: pointer;" data="4cdffba8-9cd6-46b2-ac8d-180bd550b710"><img style="text-align:center; vertical-align:middle; width:20px; height:20px" src="/Images/icons/bullet_ball_glass_grey.png"></div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 45px; text-align:left; margin-left:10px" title="Work">Work</div>
+                   <div style="width: 30px; text-align:left; margin-left:10px; margin-right:10px" class="emp-timecard-container-gridRows"> Fri</div>
+                   <div style="width: 65px; text-align:right; margin-right:20px" class="emp-timecard-container-gridRows">06/30/2023</div>
+                   <div style="width: 70px; text-align:left" class="emp-timecard-container-gridRows">06:32 AM</div>
+                   <div style="width: 84px; text-align:left" class="emp-timecard-container-gridRows"></div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 125px; text-align:left" title="Web Technology - Web Development">Web Technology - Web Development</div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                </div>
+                <div style="width: 790px ; height: 20px; border-radius: 3px 3px 3px 3px" class="TimeCardGridDataRow TimeCard_227dd962-93de-43ea-9b09-65acc4b5bad9">
+                   <div style="width: 65px; text-align:center" class="emp-timecard-container-gridRows"><img id="imgTCApproval3" style="text-align: center; vertical-align: middle; cursor: pointer; visibility: hidden; opacity: 0.3;" class="timeCardCollapsedView" src="/Images/icons/viewdetails.png" title="Expand" data="227dd962-93de-43ea-9b09-65acc4b5bad9" uniqueid="1688446800000227dd962-93de-43ea-9b09-65acc4b5bad9"><input id="chkTCApproval3" type="checkbox" style="visibility: visible; margin-left: 5px; text-align: center; vertical-align: middle; cursor: pointer;" data="227dd962-93de-43ea-9b09-65acc4b5bad9"><img style="text-align:center; vertical-align:middle; width:20px; height:20px" src="/Images/icons/bullet_ball_glass_grey.png"></div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 45px; text-align:left; margin-left:10px" title="Holiday">Holiday</div>
+                   <div style="width: 30px; text-align:left; margin-left:10px; margin-right:10px" class="emp-timecard-container-gridRows"> Tue</div>
+                   <div style="width: 65px; text-align:right; margin-right:20px" class="emp-timecard-container-gridRows">07/04/2023</div>
+                   <div style="width: 70px; text-align:left" class="emp-timecard-container-gridRows"></div>
+                   <div style="width: 84px; text-align:left" class="emp-timecard-container-gridRows"></div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 125px; text-align:left" title="Web Technology - Web Development">Web Technology - Web Development</div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="8.00">8.00</div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                   <div class="showEllipsisOnOverflow emp-timecard-container-gridRows" style="width: 50px; text-align:right; margin-left:10px" title="0.00">0.00</div>
+                </div>
+             </div>
+             <div class="emp-timecard-container-legend">
+                <div style="font-size:9pt;height:30px;"></div>
+                <div style="display: inline-block; width:204px; margin-left:21px; height:23px; text-align:left;"><input id="chkTCApproveAll" type="checkbox" style="visibility: visible;"><span style="visibility: visible; display: inline-block; vertical-align: middle; color: rgb(47, 130, 86); font-weight: bold; font-size: 9pt; height: 16px; position: relative; top: -1px;">Approve All</span><button style="margin:0px 0px 0px 10px" type="button" class="emp-popup-button" disabled="disabled">Save</button></div>
+                <div style="width:160px; text-align:right; vertical-align:bottom" class="emp-timecard-container-legendTitle">Legend</div>
+                <div style="margin-top:2px" class="emp-popup-hrLine"></div>
+                <div style="vertical-align: middle; height:24px; width:370px; margin-left:15px; margin-top:3px">
+                   <div style="display:inline-block; width:70px; vertical-align:middle"><img style="display:inline-block" src="/Images/icons/viewdetails.png"><span style="padding-left: 2px; vertical-align: text-top" class="emp-timecard-container-legendDetails">Details</span></div>
+                   <div style="display:inline-block; width:170px; vertical-align:middle"><img style="display:inline-block; width:20px; height:20px" src="/Images/icons/bullet_ball_glass_green.png"><span class="emp-timecard-container-legendDetails">Manager Approved</span></div>
+                   <div style="display:inline-block; width:100px; vertical-align:middle"><img style="display:inline-block" src="/Images/icons/document_notebook.png"><span style="padding-left: 2px; vertical-align: text-top" class="emp-timecard-container-legendDetails">Notes</span></div>
+                </div>
+             </div>
+             <img style="position:absolute; left:630px; top:420px" src="/Images/EmployeeHome/post-it-note-small.png"><span style="position: absolute; left: 645px; top: 422px; color: #2f8256; font-weight: bold; font-size: 9pt">Total Hours</span>
+             <div style="position:absolute; left:643px; top:445px; width:142px; height:125px; overflow:auto">
+                <div style="width:120px; height:15px; margin-left:5px; margin-top:2px;">
+                   <div style="display:inline-block; width:60px; text-align:left" class="emp-timecard-container-totals showEllipsisOnOverflow" title="Work">Work</div>
+                   <div style="display:inline-block; width:50px; margin-left:5px; margin-right:5px; text-align:right" class="emp-timecard-container-totals showEllipsisOnOverflow" title="15.72">15.72</div>
+                </div>
+                <div style="width:120px; height:15px; margin-left:5px; margin-top:2px;">
+                   <div style="display:inline-block; width:60px; text-align:left" class="emp-timecard-container-totals showEllipsisOnOverflow" title="Holiday">Holiday</div>
+                   <div style="display:inline-block; width:50px; margin-left:5px; margin-right:5px; text-align:right" class="emp-timecard-container-totals showEllipsisOnOverflow" title="8.00">8.00</div>
+                </div>
+                <div style="width:120px; height:5px"></div>
+                <div style="width:120px; height:15px; margin-left:5px; margin-top:2px;">
+                   <div style="display:inline-block; width:60px; text-align:left" class="emp-timecard-container-totals showEllipsisOnOverflow" title="Total">Total</div>
+                   <div style="display:inline-block; width:50px; margin-left:5px; margin-right:5px; text-align:right" class="emp-timecard-container-totals showEllipsisOnOverflow" title="23.72">23.72</div>
+                </div>
+             </div>
+          </div>
+          <div class="divPayAdjustmentsTab emp-popup-container" style="display: none;">
+             <span class="showEllipsisOnOverflow emp-popup-container-title">Pay Adjustments</span><input type="text" style="left:316px" class="emp-popup-dateTextBox hasDatepicker" id="dp1688126414093"><input type="text" style="left:433px" class="emp-popup-dateTextBox hasDatepicker" id="dp1688126414094"><img id="imgPAAddPopup" style="position:absolute; left:800px; top:13px;cursor:pointer;" src="/Images/icons/add.png">
+             <div style="left: 10px; top: 37px; position: absolute;">
+                <div style="width: 65px; text-align:center" class="emp-popup-container-items">Approval</div>
+                <div style="width: 70px; text-align:center" class="emp-popup-container-items">Date</div>
+                <div style="width: 135px; text-align:left; margin-left:10px; margin-right:10px" class="emp-popup-container-items">Type</div>
+                <div style="width: 85px; text-align:right" class="emp-popup-container-items">Amount/Units</div>
+                <div style="width: 145px" class="emp-popup-container-items"></div>
+                <div style="width: 85px; text-align:right; margin-right:10px" class="emp-popup-container-items">Total</div>
+                <div style="width: 125px; text-align:left" class="emp-popup-container-items">Labor Level</div>
+                <div style="width: 50px; text-align:center" class="emp-popup-container-items">Notes</div>
+             </div>
+             <div style="width:417px; left:10px; top:52px" class="emp-popup-hrLine"></div>
+             <div style="left:429px; top:52px" class="emp-popup-hrLine"></div>
+             <div class="emp-timecard-container-gridItems"></div>
+             <div class="emp-timecard-container-legend">
+                <div style="font-size:9pt;height:30px;"></div>
+                <div style="display: inline-block; width:204px; margin-left:21px; height:23px; text-align:left;"><input id="chkPAApproveAll" type="checkbox" style="visibility: visible;"><span style="visibility: visible; display: inline-block; vertical-align: middle; color: rgb(47, 130, 86); font-weight: bold; font-size: 9pt; height: 16px; position: relative; top: -1px;">Approve All</span><button style="margin:0px 0px 0px 10px" type="button" class="emp-popup-button" disabled="disabled">Save</button></div>
+                <div style="width:160px; text-align:right; vertical-align:bottom" class="emp-timecard-container-legendTitle">Legend</div>
+                <div style="margin-top:2px" class="emp-popup-hrLine"></div>
+                <div style="vertical-align: middle; height:24px; width:370px; margin-left:15px; margin-top:3px">
+                   <div style="display:inline-block; width:170px; vertical-align:middle"><img style="display:inline-block; width:20px; height:20px" src="/Images/icons/bullet_ball_glass_green.png"><span class="emp-timecard-container-legendDetails">Manager Approved</span></div>
+                   <div style="display:inline-block; width:100px; vertical-align:middle"><img style="display:inline-block" src="/Images/icons/document_notebook.png"><span style="padding-left: 2px; vertical-align: text-top" class="emp-timecard-container-legendDetails">Notes</span></div>
+                </div>
+             </div>
+             <img style="position:absolute; left:570px; top:420px" src="/Images/EmployeeHome/post-it-note-large.png"><span style="position: absolute; left: 585px; top: 425px; color: #2f8256; font-weight: bold; font-size: 9pt">Total Pay Adjustments</span>
+             <div style="position:absolute; left:585px; top:445px; width:213px; height:125px; overflow:auto">
+                <div style="width:190px; height:5px"></div>
+                <div style="width:190px; height:15px; margin-left:5px; margin-top:2px;">
+                   <div style="display:inline-block; width:50px; text-align:left" class="emp-timecard-container-totals showEllipsisOnOverflow" title="Total">Total</div>
+                   <div style="display:inline-block; width:65px; margin-left:5px; text-align:left" class="emp-timecard-container-totals showEllipsisOnOverflow" title=""></div>
+                   <div style="display:inline-block; width:60px; margin-left:5px; margin-right:5px; text-align:right" class="emp-timecard-container-totals showEllipsisOnOverflow" title="$0.00">$0.00</div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+    <div class="ui-widget-overlay" style="width: 1937px; height: 1232px; z-index: 1001;"></div>
+ </body>
+</html>

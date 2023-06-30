@@ -1,0 +1,10 @@
+@import '~pico-css/dist/pico.min.css';
+
+
+html body {
+    border-radius: 8px;
+}
+
+body {
+    width: 800px;
+}
