@@ -21,9 +21,11 @@ chrome.runtime.onMessage.addListener(
       }      
 
       if (request.action == "getTimeCardTotal") {
-        let timeCardTotal = document.querySelector('.emp-timecard-container-totals');
-        sendResponse({timeCardTotal: timeCardTotal.innerText});
-      }     
+        let totalsDivs = document.querySelectorAll('.emp-timecard-container-totals');
+        let timeCardTotal = parseFloat(totalsDivs[5].innerText)
+        console.log(typeof(timeCardTotal))
+        sendResponse({timeCardTotal: timeCardTotal});
+      }    
     }
   );
 
