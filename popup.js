@@ -47,12 +47,19 @@ const getTimeToClockOut = (timeRemainingToday) => {
 
     currentTime.setHours(currentHours, currentMinutes, currentSeconds)
 
-    const millisecondsToAdd = timeRemainingToday * 60 * 60 * 1000;
+    let millisecondsToAdd = timeRemainingToday * 60 * 60 * 1000;
 
-    const newTime = new Date(currentTime.getTime() + millisecondsToAdd);
-    const newHours = newTime.getHours();
-    const newMinutes = newTime.getMinutes();
-    const formattedTime = `${newHours}:${newMinutes.toString().padStart(2, '0')}`;
+    let newTime = new Date(currentTime.getTime() + millisecondsToAdd);
+    let newHours = newTime.getHours();
+    let newMinutes = newTime.getMinutes();
+    let suffix = ' am';
+    
+    if(newHours > 12){
+        newHours -= 12 
+        suffix = ' pm'
+    } 
+
+    const formattedTime = `${newHours}:${newMinutes.toString().padStart(2, '0')}${suffix}`;
     
     console.log(`New time: ${formattedTime}`);
     displayResultText.innerHTML = formattedTime
