@@ -26,8 +26,6 @@ async function main() {
         let currentShiftTimeInfoResponse = await sendMessage(tab.id, {action: "getCurrentShiftTimeInfo"});
         let numberOfTimeDataRowsResponse = await sendMessage(tab.id, {action: "getNumberOfTimeDataRows"});
         let timeCardTotalResponse = await sendMessage(tab.id, {action: "getTimeCardTotal"});
-
-        // if(currentShiftTimeInfoInput != NaN) currentShiftTimeInfoResponse = currentShiftTimeInfoInput
         
         calculateRemainingTimeAsDecimal(currentShiftTimeInfoResponse.currentShiftTimeInfo, numberOfTimeDataRowsResponse.numberOfTimeDataRows, timeCardTotalResponse.timeCardTotal)
     } catch (error) {
@@ -40,7 +38,12 @@ main();
 function calculateRemainingTimeAsDecimal(currentShiftTimeInfo, numberOfTimeDataRows, timeCardTotal) {
     const idealPayPeriodTotal = (numberOfTimeDataRows) * 8
     const timeRemainingToday = parseFloat(idealPayPeriodTotal) - (parseFloat(timeCardTotal) + (parseFloat(currentShiftTimeInfo) - .5))
-    console.log(timeRemainingToday)
+    if (timeCardTotal) {
+        document.querySelector('.time-not-found-message').style.display = 'none';
+    } else {
+        document.querySelector('.time-not-found-message').style.display = 'block';
+    }
+    
     getTimeToClockOut(timeRemainingToday);
 }
 
@@ -71,24 +74,13 @@ const getTimeToClockOut = (timeRemainingToday) => {
 
 }
 
-currentShiftTimeInfoInput.addEventListener('change', function() {
-  currentTime = parseFloat(this.value);
-  localStorage.setItem('currentTime', this.value);
-});
-
-totalTimeInput.addEventListener('change', function() {
-    totalTime = parseFloat(this.value);
-    localStorage.setItem('totalTime', this.value);
-});
-
-payPeriodDaysInput.addEventListener('change', function() {
-    payPeriodDay = parseFloat(this.value);
-    localStorage.setItem('payPeriodDay', this.value);
-});
-
 form.addEventListener('submit', function(event) {
     event.preventDefault();
-    calculateRemainingTime();
+    console.log(currentShiftTimeInfoInput.value)
+    console.log(totalTimeInput.value)
+    console.log(payPeriodDaysInput.value)
+
+    calculateRemainingTimeAsDecimal(currentShiftTimeInfoInput.value, totalTimeInput.value, payPeriodDaysInput.value)
 });
 
 
