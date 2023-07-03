@@ -81,8 +81,22 @@ form.addEventListener('submit', function(event) {
 });
 
 
-
-// Extension: C:\Users\jk_dw\Documents\CODE\stratus-time-extension.crx
-// Key File: C:\Users\jk_dw\Documents\CODE\stratus-time-extension.pem
+// Apply theme
+document.getElementById('toggleStyles').addEventListener('change', function(e) {
+    console.log(document.getElementById('toggleStyles'))
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        if (e.target.checked) {
+            chrome.scripting.insertCSS({
+                target: {tabId: tabs[0].id},
+                files: ["webpageStyles.css"]
+            });
+        } else {
+            chrome.scripting.removeCSS({
+                target: {tabId: tabs[0].id},
+                files: ["webpageStyles.css"]
+            });
+        }
+    });
+});
 
 
