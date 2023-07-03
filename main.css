@@ -6,5 +6,21 @@ html body {
 }
 
 body {
-    width: 800px;
+    width: 500px;
+}
+
+li, input, label {
+    font-size: 13.5px;
+}
+
+input:not([type=checkbox],[type=radio],[type=range]) {
+
+    padding: 8px;
+}
+
+button {
+    height: 40px;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 0;
 }

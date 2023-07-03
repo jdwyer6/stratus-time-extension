@@ -1,5 +1,10 @@
 const displayResultText = document.querySelector('.displayResultText');
 
+let currentShiftTimeInfoInput = document.getElementById('currentShiftTimeInfo');
+let totalTimeInput = document.getElementById('totalTime');
+let payPeriodDaysInput = document.getElementById('payPeriodDay');
+let form = document.querySelector('form');
+
 
 function sendMessage(tabId, message) {
     return new Promise((resolve, reject) => {
@@ -21,6 +26,8 @@ async function main() {
         let currentShiftTimeInfoResponse = await sendMessage(tab.id, {action: "getCurrentShiftTimeInfo"});
         let numberOfTimeDataRowsResponse = await sendMessage(tab.id, {action: "getNumberOfTimeDataRows"});
         let timeCardTotalResponse = await sendMessage(tab.id, {action: "getTimeCardTotal"});
+
+        // if(currentShiftTimeInfoInput != NaN) currentShiftTimeInfoResponse = currentShiftTimeInfoInput
         
         calculateRemainingTimeAsDecimal(currentShiftTimeInfoResponse.currentShiftTimeInfo, numberOfTimeDataRowsResponse.numberOfTimeDataRows, timeCardTotalResponse.timeCardTotal)
     } catch (error) {
@@ -63,6 +70,28 @@ const getTimeToClockOut = (timeRemainingToday) => {
     displayResultText.innerHTML = formattedTime
 
 }
+
+currentShiftTimeInfoInput.addEventListener('change', function() {
+  currentTime = parseFloat(this.value);
+  localStorage.setItem('currentTime', this.value);
+});
+
+totalTimeInput.addEventListener('change', function() {
+    totalTime = parseFloat(this.value);
+    localStorage.setItem('totalTime', this.value);
+});
+
+payPeriodDaysInput.addEventListener('change', function() {
+    payPeriodDay = parseFloat(this.value);
+    localStorage.setItem('payPeriodDay', this.value);
+});
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    calculateRemainingTime();
+});
+
+
 
 // Extension: C:\Users\jk_dw\Documents\CODE\stratus-time-extension.crx
 // Key File: C:\Users\jk_dw\Documents\CODE\stratus-time-extension.pem
