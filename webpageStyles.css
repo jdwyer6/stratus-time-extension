@@ -26,9 +26,4 @@ p, h1, h2, h3, h4, h5, h6, div, label {
     padding: 32px 48px;
     border-radius: 8px;
     box-shadow: 4px 4px 4px rgba(59, 59, 59, 0.2);
-    transition: all .2s ease-out;
-}
-
-.iconsDiv label:hover {
-    border: 2px solid red;
 }
