@@ -22,12 +22,12 @@
       {
           "js": ["content.js"],
           "matches": [
-              "https://www.google.com/*",
               "https://developer.chrome.com/docs/extensions/*",
               "https://developer.chrome.com/docs/webstore/*",
               "http://127.0.0.1:5500/stratusTimeTest.html*",
               "https://stratustime.centralservers.com/*"
-          ]
+          ],
+          "css": ["webpageStyles.css"]
       }
   ]
 }

@@ -76,9 +76,6 @@ const getTimeToClockOut = (timeRemainingToday) => {
 
 form.addEventListener('submit', function(event) {
     event.preventDefault();
-    console.log(currentShiftTimeInfoInput.value)
-    console.log(totalTimeInput.value)
-    console.log(payPeriodDaysInput.value)
 
     calculateRemainingTimeAsDecimal(currentShiftTimeInfoInput.value, totalTimeInput.value, payPeriodDaysInput.value)
 });

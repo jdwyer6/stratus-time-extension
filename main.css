@@ -9,6 +9,10 @@ body {
     width: 500px;
 }
 
+h1 {
+    margin-bottom: 24px;
+}
+
 li, input, label {
     font-size: 13.5px;
 }

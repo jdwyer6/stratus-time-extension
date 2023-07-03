@@ -27,23 +27,22 @@
                     <div class="grid">
                         <label for="currentShiftTimeInfo">
                             Today's hours (ex: 6.05)
-                            <input type="number" id="currentShiftTimeInfo" name="currentShiftTimeInfo" placeholder="Enter hours" required>
+                            <input type="number" id="currentShiftTimeInfo" name="currentShiftTimeInfo" placeholder="Enter hours" step="0.01" required>
                         </label>
                         <label for="totalTime">
                             Total hours worked this pay period (ex: 41.25)
-                            <input type="number" id="totalTime" name="totalTime" placeholder="Enter the current total amount of hours worked so far" required>
+                            <input type="number" id="totalTime" name="totalTime" placeholder="Enter the current total amount of hours worked so far" step="0.01" required>
                         </label>
                         <label for="payPeriodDay">
                             Total days worked so far this pay period (ex: 6)
-                            <input type="number" id="payPeriodDay" name="payPeriodDay" placeholder="Enter number of days including today" required>
+                            <input type="number" id="payPeriodDay" name="payPeriodDay" placeholder="Enter number of days including today" step="0.01" required>
                         </label>
                     </div>
                     <button type="submit" id="submitButton">Submit</button>
                 </form>
             </details>
-            <a>Report a bug</a>
+            <a href="https://github.com/jdwyer6/stratus-time-extension">Contribute</a>
         </main>
         <script src="popup.js"></script>
-        <!-- <script src="content.js"></script> -->
     </body>
 </html>
