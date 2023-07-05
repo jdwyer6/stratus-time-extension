@@ -9,8 +9,12 @@ body, html, #ContentPane{
     font-weight: 200 !important;
 }
 
-p, h1, h2, h3, h4, h5, h6, div, label, .emp-popup-topTabTitle {
+p, h1, h2, h3, h4, h5, h6, div, span, button, label, .emp-popup-topTabTitle {
     color: rgb(58, 58, 58) !important;
+}
+
+button {
+    background-color: white !important;
 }
 
 .iconsDiv {
