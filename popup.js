@@ -26,6 +26,8 @@ async function main() {
         let currentShiftTimeInfoResponse = await sendMessage(tab.id, {action: "getCurrentShiftTimeInfo"});
         let numberOfTimeDataRowsResponse = await sendMessage(tab.id, {action: "getNumberOfTimeDataRows"});
         let timeCardTotalResponse = await sendMessage(tab.id, {action: "getTimeCardTotal"});
+
+        console.log("popup.js: ", currentShiftTimeInfoResponse, numberOfTimeDataRowsResponse, timeCardTotalResponse)
         
         calculateRemainingTimeAsDecimal(currentShiftTimeInfoResponse.currentShiftTimeInfo, numberOfTimeDataRowsResponse.numberOfTimeDataRows, timeCardTotalResponse.timeCardTotal)
     } catch (error) {

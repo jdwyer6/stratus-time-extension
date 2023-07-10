@@ -26,16 +26,16 @@
                 <form>
                     <div class="grid">
                         <label for="currentShiftTimeInfo">
-                            Today's hours (ex: 6.05)
+                            Today's hours
                             <input type="number" id="currentShiftTimeInfo" name="currentShiftTimeInfo" placeholder="Enter hours" step="0.01" required>
-                        </label>
-                        <label for="totalTime">
-                            Total hours worked this pay period (ex: 41.25)
-                            <input type="number" id="totalTime" name="totalTime" placeholder="Enter the current total amount of hours worked so far" step="0.01" required>
                         </label>
                         <label for="payPeriodDay">
                             Total days worked so far this pay period (ex: 6)
                             <input type="number" id="payPeriodDay" name="payPeriodDay" placeholder="Enter number of days including today" step="0.01" required>
+                        </label>
+                        <label for="totalTime">
+                            Total hours worked so far this pay period (ex: 41.25)
+                            <input type="number" id="totalTime" name="totalTime" placeholder="Enter the current total amount of hours worked so far" step="0.01" required>
                         </label>
                     </div>
                     <button type="submit" id="submitButton">Submit</button>
